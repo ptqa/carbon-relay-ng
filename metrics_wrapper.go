@@ -24,7 +24,7 @@ func Timer(key string) metrics.Timer {
 	//t := metrics.NewTimer()
 	//default is NewExpDecaySample(1028, 0.015)
 	//histogram: NewHistogram(NewExpDecaySample(1028, 0.015)),
-	histogram := metrics.NewHistogram(metrics.(NewExpDecaySample(1028, 0.015))
+	histogram := metrics.NewHistogram(metrics.NewExpDecaySample(1028, 0.015))
 	meter := metrics.NewMeter()
 	t := metrics.NewCustomTimer(histogram, meter)
 	return metrics.GetOrRegister(expandKey("target_type=gauge.unit=ns."+key), t).(metrics.Timer)
